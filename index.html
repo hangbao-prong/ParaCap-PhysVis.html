@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>平行板电容器物理原理可视化交互</title>
+    <title>介电之窗——平行板电容器物理原理交互可视化</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 修复资源链接：使用稳定CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <script>
         tailwind.config = {
@@ -46,26 +47,26 @@
     <div class="container mx-auto px-4 py-8 max-w-6xl">
         <!-- 标题区域 -->
         <header class="text-center mb-8">
-            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-gray-800">平行板电容器物理原理可视化交互</h1>
-            <p class="text-gray-600 mt-2">基于高斯定理与电容公式的AI交互演示 | 参数可调 · 实时可视化</p>
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-gray-800">介电之窗——平行板电容器物理原理交互可视化</h1>
+            <p class="text-gray-600 mt-2">基于高斯定理与电容公式的交互演示 | 参数可调 · 实时可视化</p>
         </header>
 
         <!-- 物理原理说明 -->
         <section class="bg-white rounded-xl shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                <i class="fa fa-book mr-2 text-primary"></i> 物理原理与定理
+                <i class="fa-solid fa-book mr-2 text-primary"></i> 物理原理与定理
             </h2>
             <ul class="space-y-3 text-gray-700">
                 <li class="flex items-start">
-                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <i class="fa-solid fa-check-circle text-primary mt-1 mr-2"></i>
                     <span><strong>高斯定理</strong>：通过任意闭合曲面的电通量等于该曲面所包围的所有电荷的代数和除以\( \varepsilon_0 \)，即\( \oint \vec{E} \cdot d\vec{S} = \frac{Q_{enc}}{\varepsilon_0} \)。用于推导平行板间电场强度\( E = \frac{\sigma}{\varepsilon_0} \)（\( \sigma \)为极板电荷面密度）。</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <i class="fa-solid fa-check-circle text-primary mt-1 mr-2"></i>
                     <span><strong>电容公式</strong>：平行板电容器的电容\( C = \frac{\varepsilon S}{d} \)，其中\( \varepsilon \)为介电常数（\( \varepsilon = \varepsilon_r \varepsilon_0 \)，\( \varepsilon_r \)为相对介电常数），\( S \)为极板面积，\( d \)为极板间距。</span>
                 </li>
                 <li class="flex items-start">
-                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <i class="fa-solid fa-check-circle text-primary mt-1 mr-2"></i>
                     <span><strong>电场分布</strong>：忽略边缘效应时，极板间电场均匀，大小为\( E = \frac{U}{d} = \frac{Q}{\varepsilon S} \)；极板外电场相互抵消，强度为0。</span>
                 </li>
             </ul>
@@ -76,7 +77,7 @@
             <!-- 交互控制区 -->
             <div class="bg-white rounded-xl shadow-md p-6 lg:col-span-1">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fa fa-sliders mr-2 text-primary"></i> 参数交互控制
+                    <i class="fa-solid fa-sliders mr-2 text-primary"></i> 参数交互控制
                 </h2>
                 <div class="space-y-6">
                     <!-- 极板面积 -->
@@ -134,7 +135,7 @@
                     <!-- 重置按钮 -->
                     <button id="reset-btn" class="w-full bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-md transition-colors"
                             onclick="resetParams()">
-                        <i class="fa fa-refresh mr-1"></i> 重置参数
+                        <i class="fa-solid fa-refresh mr-1"></i> 重置参数
                     </button>
                 </div>
             </div>
@@ -144,7 +145,7 @@
                 <!-- 电场分布可视化 -->
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fa fa-area-chart mr-2 text-secondary"></i> 电场分布可视化
+                        <i class="fa-solid fa-chart-area mr-2 text-secondary"></i> 电场分布可视化
                     </h2>
                     <div class="flex justify-center">
                         <svg id="electric-field" width="100%" height="300" class="max-w-full"></svg>
@@ -154,7 +155,7 @@
                 <!-- 电容与电场数值展示 -->
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fa fa-table mr-2 text-accent"></i> 物理量计算结果
+                        <i class="fa-solid fa-table mr-2 text-accent"></i> 物理量计算结果
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="p-4 border border-gray-200 rounded-lg">
@@ -181,7 +182,7 @@
         <!-- 应用拓展说明 -->
         <section class="bg-white rounded-xl shadow-md p-6 mt-8">
             <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                <i class="fa fa-lightbulb-o mr-2 text-yellow-500"></i> 技术应用与拓展
+                <i class="fa-solid fa-lightbulb mr-2 text-yellow-500"></i> 技术应用与拓展
             </h2>
             <p class="text-gray-700">该交互模型可用于<strong>电容传感器</strong>设计（如位移传感器、压力传感器）：通过检测电容变化反推极板间距、面积或介电常数的变化。例如，在智能康复手套中，可将电容传感器集成于手掌部位，通过握力导致的极板间距变化（弹性介质压缩），实时监测患者握力分布与大小，辅助评估手部功能恢复情况。</p>
         </section>
@@ -201,8 +202,13 @@
             voltage: 50       // 极板电压，V
         };
 
-        // 初始化图表
+        // 初始化图表（确保DOM加载完成后执行）
         let capacitanceChart;
+        document.addEventListener('DOMContentLoaded', function() {
+            initChart();
+            updateVisualization();
+        });
+
         function initChart() {
             const ctx = document.getElementById('capacitance-chart').getContext('2d');
             capacitanceChart = new Chart(ctx, {
@@ -240,6 +246,7 @@
                     }
                 }
             });
+            updateChartData(); // 初始化图表数据
         }
 
         // 更新参数
@@ -394,12 +401,6 @@
             updateElectricField();
             updateValues();
         }
-
-        // 页面加载完成后初始化
-        window.onload = function() {
-            initChart();
-            updateVisualization();
-        };
     </script>
 </body>
 </html>
