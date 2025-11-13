@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>介电之窗——平行板电容器物理原理交互可视化</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 修复资源链接：使用稳定CDN -->
+    <!-- 引入LaTeX渲染库 -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <script>
@@ -207,6 +208,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             initChart();
             updateVisualization();
+            // 渲染LaTeX公式
+            MathJax.typeset();
         });
 
         function initChart() {
@@ -272,6 +275,8 @@
             }
             updateVisualization();
             updateChartData();
+            // 重新渲染LaTeX公式
+            MathJax.typeset();
         }
 
         // 重置参数
